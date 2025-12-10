@@ -15,7 +15,7 @@ We introduces a Dual-branch Network with Adaptation (DNA) to address the demandi
 * Python: 3.8+
 * Torch: 1.12.1+
 
-## Command
+## Usage
 
 ### Train
     bash train.sh
