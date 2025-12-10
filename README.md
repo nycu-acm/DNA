@@ -9,7 +9,7 @@ We introduces a Dual-branch Network with Adaptation (DNA) to address the demandi
 <img width="1793" height="862" alt="image" src="https://github.com/user-attachments/assets/33503e64-5799-4c94-9fe8-3a7655477048" />
 
 ## Downloads
-* Download the pretrained model from https://drive.google.com/drive/folders/1jvRByh6SeR6kwn2hUKP_RHyPp4iYg_8S?usp=drive_link
+* Download the pretrained model from https://drive.google.com/file/d/1J8BBq7zvAk4wSHCTav8akrGIp1LDvyQq/view?usp=sharing
 * Traditional Chinese dataset comes from [SCUT-COUCH 2009数据库](http://www.hcii-lab.net/data/SCUTCOUCH/CN/download.html)
 * Japanese dataset comes from [SDT](https://github.com/dailenson/SDT?tab=readme-ov-file)
 
