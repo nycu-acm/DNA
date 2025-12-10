@@ -173,6 +173,6 @@ if __name__ == '__main__':
     parser.add_argument('--store_type', dest='store_type', required=False, default='online', help='online, img, or both')
     parser.add_argument('--sample_size', dest='sample_size', default='200', required=False, help='randomly generate a certain number of characters for each writer')
     parser.add_argument('--dataset', dest='dataset', type=int, default=0, help='0: seen tra, 1: unseen tra')
-    parser.add_argument('-c', '--char_dict', dest='char_dict', default='character_dict_t_only_all', required=False, help='continue train model')
+    parser.add_argument('-c', '--char_dict', dest='char_dict', default='character_dict_t_only_all', required=False, help='character order')
     opt = parser.parse_args()
     main(opt)
