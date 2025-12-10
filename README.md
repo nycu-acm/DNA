@@ -63,10 +63,10 @@ We introduces a Dual-branch Network with Adaptation (DNA) to address the demandi
                  |--- ...
 
 ## Acknowledgement
-[SDT](https://github.com/dailenson/SDT?tab=readme-ov-file)
-[SCUT-COUCH 2009数据库](http://www.hcii-lab.net/data/SCUTCOUCH/CN/download.html)
-TUAT HANDS dataset
-[HTR-best-practices](https://github.com/georgeretsi/HTR-best-practices)
+* [SDT](https://github.com/dailenson/SDT?tab=readme-ov-file)
+* [SCUT-COUCH 2009数据库](http://www.hcii-lab.net/data/SCUTCOUCH/CN/download.html)
+* TUAT HANDS dataset
+* [HTR-best-practices](https://github.com/georgeretsi/HTR-best-practices)
 
 ## Citation
     
