@@ -54,7 +54,7 @@ We introduces a Dual-branch Network with Adaptation (DNA) to address the demandi
 `-c`, `--characters`: characters you want to generate
 
 ## Style samples
-    Project
+    DNA
     |--- data
            |--- inference_style_samples
                  |--- style1
