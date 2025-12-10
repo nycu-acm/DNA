@@ -2,6 +2,8 @@
 
 Accepted in WACV 2026.
 
+[Arxiv](https://arxiv.org/pdf/2511.22064)
+
 ## Overview
 We introduces a Dual-branch Network with Adaptation (DNA) to address the demanding challenge of unseen Online Handwriting Generation (OHG). Existing OHG approaches often struggle to synthesize characters that were unseen during training (UWUC: Unseen-Writer-Unseen-Characters), particularly in complex glyph-based languages such as Traditional Chinese.
 <img width="1793" height="862" alt="image" src="https://github.com/user-attachments/assets/33503e64-5799-4c94-9fe8-3a7655477048" />
