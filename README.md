@@ -1,18 +1,19 @@
-# Online Handwriting Font Generation
+# DNA: Dual-branch Network with Adaptation for Open-Set Online Handwriting Generation
 
-## Updates
-[24/10/30]: Inference codes.
+Accepted in WACV 2026.
 
-[24/11/13]: Training codes.
-
-[24/11/27]: Testing codes.
-
-## To be updated
-1. 
+## Overview
+We introduces a Dual-branch Network with Adaptation (DNA) to address the demanding challenge of unseen Online Handwriting Generation (OHG). Existing OHG approaches often struggle to synthesize characters that were unseen during training (UWUC: Unseen-Writer-Unseen-Characters), particularly in complex glyph-based languages such as Traditional Chinese.
+<img width="1793" height="862" alt="image" src="https://github.com/user-attachments/assets/33503e64-5799-4c94-9fe8-3a7655477048" />
 
 ## Downloads
-Download the model and content images from https://drive.google.com/drive/folders/1jvRByh6SeR6kwn2hUKP_RHyPp4iYg_8S?usp=drive_link
-Download the well-trained SDT model from https://github.com/dailenson/SDT?tab=readme-ov-file (if needed)
+Download the pretrained model from https://drive.google.com/drive/folders/1jvRByh6SeR6kwn2hUKP_RHyPp4iYg_8S?usp=drive_link
+Traditional Chinese dataset comes from [SCUT-COUCH 2009数据库](http://www.hcii-lab.net/data/SCUTCOUCH/CN/download.html)
+Japanese dataset comes from [SDT](https://github.com/dailenson/SDT?tab=readme-ov-file)
+
+## Environment
+* Python: 3.8+
+* Torch: 1.12.1+
 
 ## Command
 
@@ -20,7 +21,7 @@ Download the well-trained SDT model from https://github.com/dailenson/SDT?tab=re
     bash train.sh
 
 ### Test
-    python test.py --save_dir [存放路徑] --model [模型路徑]
+    bash test.sh
     
 `--cfg`: config file
 
@@ -33,7 +34,7 @@ Download the well-trained SDT model from https://github.com/dailenson/SDT?tab=re
 `--sample_size`: number of characters for each writer
 
 ### Evaluate
-    python evaluate.py --data_path [Test存放路徑]
+    bash eval/eval.sh
     
 ### Inference
     python inference.py --model Saved/best.pth --save_dir results/inference_samples --style data/inference_style_samples --store_type img -c [中文字串]
@@ -60,3 +61,13 @@ Download the well-trained SDT model from https://github.com/dailenson/SDT?tab=re
                        |--- img2.png
                        |--- ...
                  |--- ...
+
+## Acknowledgement
+[SDT](https://github.com/dailenson/SDT?tab=readme-ov-file)
+[SCUT-COUCH 2009数据库](http://www.hcii-lab.net/data/SCUTCOUCH/CN/download.html)
+TUAT HANDS dataset
+[HTR-best-practices](https://github.com/georgeretsi/HTR-best-practices)
+
+## Citation
+    
+
