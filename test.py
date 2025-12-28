@@ -6,7 +6,7 @@ from data_loader.loader import ScriptDataset
 import pickle
 from models.model import SDT_Generator
 import tqdm
-from utils.util import writeCache, dxdynp_to_list, coords_render
+from utils.util import writeCache, dxdynp_to_list, coords_render, fix_seed
 import lmdb
 import csv
 
