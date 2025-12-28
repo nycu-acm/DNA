@@ -28,7 +28,7 @@ def compute_geometry_score(real_dir, args):
     print(f"Loaded {real_data.shape[0]} real images.")
 
     print("Loading DNA images...")
-    dna_data = load_images_from_folder(args.dna_dir, max_images)
+    dna_data = load_images_from_folder(args.gen_dir, max_images)
     print(f"Loaded {dna_data.shape[0]} generated images.")
 
     max_images = real_data.shape[0]
@@ -46,7 +46,7 @@ def compute_geometry_score(real_dir, args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Compute Geometry Score between two image folders.")
     parser.add_argument("--real_dir", type=str, default="../Generated/result/test2_gt")
-    parser.add_argument("--dna_dir", type=str, default="../Generated/result/test2")
+    parser.add_argument("--gen_dir", type=str, default="../Generated/result/test2")
     args = parser.parse_args()
 
     compute_geometry_score(args.real_dir, args)
