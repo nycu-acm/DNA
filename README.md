@@ -36,7 +36,8 @@ We introduces a Dual-branch Network with Adaptation (DNA) to address the demandi
 `--sample_size`: number of characters for each writer
 
 ### Evaluate
-    bash eval/eval.sh
+    cd eval
+    bash eval.sh
     
 ### Inference
     python inference.py --model Saved/best.pth --save_dir results/inference_samples --style data/inference_style_samples --store_type img -c [中文字串]
