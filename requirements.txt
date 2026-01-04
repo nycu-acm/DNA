@@ -8,3 +8,8 @@ opencv-python
 tensorboardX
 tqdm
 fastdtw
+gudhi
+ptflops
+scipy
+pytorch-fid
+matplotlib
