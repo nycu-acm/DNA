@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DNA</title>
+  <meta name="description" content="DNA project page">
+  <meta property="og:title" content="DNA">
+  <meta property="og:description" content="Time Series Forecasting, Large Language Models, Foundation Models, Prompt Tuning, Multi Modal">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">DNA</div>
+      <div class="links">
+        <a class="btn" href="#abstract">Abstract</a>
+        <a class="btn" href="#method">Methodology</a>
+        <a class="btn" href="#results">Experiments</a>
+        <!-- <a class="btn" href="#resources">Resources</a> -->
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="badge-row"><span class="badge">Online Handwriting Generation • Zero-Shot Generation • Handwriting Style Imitation • Style Transfer</span></div>
+
+      <h1 class="title-main">DNA</h1>
+      <h2 class="title-sub">Dual-branch Network with Adaptation for Online Handwriting Generation</h2>
+
+      <div class="authors">
+        <a href="https://scholar.google.com/citations?view_op=list_works&hl=zh-TW&user=zgKrnSgAAAAJ" target="_blank" rel="noopener">Tsai-Ling Huang</a>,
+        <a href="https://scholar.google.com/citations?user=UUT7AlUAAAAJ" target="_blank" rel="noopener">Nhat-Tuong Do-Tran</a>,
+        <a href="https://scholar.google.com/citations?user=5xFNBH4AAAAJ&hl=zh-TW&oi=ao" target="_blank" rel="noopener">Ngoc-Hoang-Lam Le</a>,
+        <a href="https://scholar.google.com/citations?user=MSWL2noAAAAJ&hl=zh-TW&oi=ao" target="_blank" rel="noopener">Hong-Han Shuai</a>,
+        <a href="https://scholar.google.com/citations?user=xTdexhsAAAAJ&hl=zh-TW" target="_blank" rel="noopener">Ching-Chun Huang</a>
+      </div>
+
+      <div class="affil">Institute of Artificial Intelligence Innovation, National Yang Ming Chiao Tung University</div>
+
+      <div class="logo-row">
+        <img src="assets/img/logo_nycu.png" alt="NYCU Logo" style="height:100px; width:auto;">
+        <img src="assets/img/logo_acm.png" alt="ACM Logo" style="height:100px; width:auto;">
+      </div>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#" aria-disabled="true" target="_blank" rel="noopener">Paper (coming soon)</a>
+        <a class="btn primary" href="https://github.com/nycu-acm/DNA" target="_blank" rel="noopener">Code</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ABSTRACT + CONTRIBUTION -->
+    <section id="abstract" class="section">
+      <div class="container">
+        <h2>📝 Abstract</h2>
+        <p>Online handwriting generation (OHG) enhances handwriting recognition models by synthesizing diverse, human-like samples. However, existing OHG methods struggle to generate unseen characters, particularly in glyph-based languages like Chinese, limiting their real-world applicability. In this paper, we introduce our method for OHG, where the writer’s style and the characters generated during testing are unseen during training. To tackle this challenge, we propose a Dual-branch Network with Adaptation (DNA), which comprises an adaptive style branch and an adaptive content branch. The style branch learns stroke attributes such as writing direction, spacing, placement, and flow to generate realistic handwriting. Meanwhile, the content branch is designed to generalize effectively to unseen characters by decomposing character content into structural information and texture details, extracted via local and global encoders, respectively. Extensive experiments demonstrate that our DNA model is well-suited for the unseen OHG setting, achieving state-of-the-art performance.</p>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <h3 id="contribution">Online handwriting generation data setting</h3>
+              <div class="fig">
+                <img src="assets/img/f1.png" alt="Illustration of the online handwriting generation setting" 
+                    style="display:block; margin:0 auto; max-width:70%; height:auto;">
+              </div>
+              <p class="caption">Illustration of the online handwriting generation setting. Our proposed DNA model is trained under the SWSC (Seen-Writer-Seen-Characters) Level 1 setting. During testing, we evaluate DNA’s ability to generate online handwriting characters across two other levels: UWSC (Unseen-Writer-Seen-Characters) and UWUC (Unseen-Writer-Unseen-Characters). Additionally, we compare DNA’s performance with the state-of-the-art UWSC method, SDT. The blue squares highlight incorrect strokes generated by SDT, particularly at the UWUC Level 3 setting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section id="method" class="section">
+      <div class="container">
+        <h2>📘 Methodology</h2>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <h3>🏗️ DNA Architecture</h3>
+              <div class="fig"><img src="assets/img/f2.png" alt="Architecture of DNA"></div>
+              <p class="caption"> Illustration of our proposed <strong>DNA</strong>. The style branch employs a style encoder
+<em>E</em><sub>s</sub>, followed by style and glyph heads, to extract style features
+<em>S</em><sub>w</sub><sup>s</sup> and <em>G</em><sub>w</sub><sup>s</sup>.
+The content branch uses a local encoder <em>E</em><sup>l</sup><sub>c</sub> for structural features
+and a global encoder <em>E</em><sup>g</sup><sub>c</sub> for texture features.
+Structural features enhance texture features to form the enriched character content embedding
+<em>Z</em><sup>c</sup><sub>i</sub>.
+Along with previous point states
+{<em>p</em><sup>w,i</sup><sub>j</sub>}<sub>j=1</sub><sup>t−1</sup>,
+this forms the point sequence <em>P</em><sup>c</sup><sub>i</sub>.
+The decoder then integrates <em>P</em><sup>c</sup><sub>i</sub> with
+<em>S</em><sub>w</sub><sup>s</sup> and <em>G</em><sub>w</sub><sup>s</sup>
+to generate the online handwriting trajectory.
+Note that the spacing loss <em>ℒ</em><sub>sp</sub> is applied only in the second training stage
+to ensure fluid handwriting.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="results" class="section">
+      <div class="container">
+        <h2>🧪 Experiments</h2>
+        <div class="row">
+          
+          <div class="col-12">
+            <div class="card">
+              <h3>Quantitative comparison</h3>
+              <div class="fig"><img src="assets/img/e1.png" alt="Quantitative comparison"></div>
+              <!-- <p class="caption"></p> -->
+            </div>
+          </div>
+          
+          <div class="col-12">
+            <div class="card">
+              <h3> Qualitative comparison</h3>
+              <div class="fig"><img src="assets/img/e2.png" alt=" Qualitative comparison"></div>
+              <!-- <p class="caption"></p> -->
+            </div>
+          </div>
+          
+          <div class="col-12">
+            <div class="card">
+              <h3>Ablation study of different loss combinations</h3>
+              <div class="fig"><img src="assets/img/e3.png" alt="Ablation study of different loss combinations"></div>
+              <!-- <p class="caption"></p> -->
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="card">
+              <h3>Ablation study of DNA with different combinations of local and global encoders</h3>
+              <div class="fig"><img src="assets/img/e4.png" alt="Ablation study of DNA with different combinations of local and global encoders"></div>
+              <!-- <p class="caption"></p> -->
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="card">
+              <h3>Qualitative results of style-guided synthesis</h3>
+              <div class="fig"><img src="assets/img/e9.png" alt="Qualitative results of style-guided synthesis"></div>
+              <!-- <p class="caption"></p> -->
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="card">
+              <h3>t-SNE visualization for the content recognizers</h3>
+              <div class="fig"><img src="assets/img/e5.png" alt="t-SNE visualization for the content recognizers"></div>
+              <!-- <p class="caption"></p> -->
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="card">
+              <h3>Varying numbers of style samples during inference</h3>
+              <div class="fig"><img src="assets/img/e6.png" alt="Varying numbers of style samples during inference"></div>
+              <!-- <p class="caption"></p> -->
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="card">
+              <h3>Qualitative Input Style Sample Size</h3>
+              <div class="fig"><img src="assets/img/e8.png" alt="Qualitative Input Style Sample Size"></div>
+              <!-- <p class="caption"></p> -->
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="card">
+              <h3>Model size and inference speed</h3>
+              <div class="fig"><img src="assets/img/e7.png" alt="Model size and inference speed"></div>
+              <!-- <p class="caption"></p> -->
+            </div>
+          </div>
+
+        </div> <!-- row -->
+      </div> <!-- container -->
+    </section>
+
+    <!-- ACKNOWLEDGMENT -->
+    <section id="acknowledgment" class="section">
+    <div class="container">
+        <h2>💌 Acknowledgment</h2>
+        <div class="card">
+        <p style="font-size: 1.05rem; line-height: 1.7; margin: 0; text-align: justify; text-justify: inter-word;">
+            This work was financially supported in part (project number: 112UA10019) by the Co-creation Platform of the Industry Academia Innovation School, NYCU, under the framework of the National Key Fields Industry-University Cooperation and Skilled Personnel Training Act, from the Ministry of Education (MOE) and industry partners in Taiwan.  It also supported in part by the National Science and Technology Council, Taiwan, under Grant NSTC-112-2221-E-A49-089-MY3, Grant NSTC-110-2221-E-A49-066-MY3, Grant NSTC-111-2634-F-A49-010, Grant NSTC-112-2425-H-A49-001, and in part by the Higher Education Sprout Project of the National Yang Ming Chiao Tung University and the Ministry of Education (MOE), Taiwan. We also would like to express our gratitude for the support from E.SUN Financial Holding Co Ltd, Professor Yi-Ren Yeh, E.SUN colleagues, Hsuan-Tung Liu, and et al.
+        </p>
+        <p style="color:#f59e0b; font-weight:600;">
+            🌟 With heartfelt appreciation — Thank you all! 謝謝!
+        </p>
+        </div>
+    </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>© 2025 LAMP. This website is adapted from <a href="https://nycu-acm.github.io/UIStyler/website/" target="_blank" rel="noopener">UIStyler</a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
