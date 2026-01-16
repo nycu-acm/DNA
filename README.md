@@ -14,8 +14,8 @@ We introduces a Dual-branch Network with Adaptation (DNA) to address the demandi
 * Japanese dataset comes from [SDT](https://github.com/dailenson/SDT?tab=readme-ov-file)
 
 ## Environment
-* Python: 3.8+
-* Torch: 1.12.1+
+* Python: 3.8+ (3.8)
+* Torch: 1.12.1+ (2.2.1)
 
 ## Usage
 
